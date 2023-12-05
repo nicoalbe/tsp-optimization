@@ -1,0 +1,43 @@
+tsp100_10-5.dat: 2.21555s.
+tsp100_100-5.dat: 64.6121s.
+tsp100_1000-5.dat: 63.1313s.
+tsp100_14x18-5.dat: 131.116s.
+tsp10_10-5.dat: 0.052061s.
+tsp10_100-5.dat: 0.0670652s.
+tsp10_1000-5.dat: 0.110206s.
+tsp10_8x10-5.dat: 0.0711388s.
+tsp120_10-5.dat: 5.62094s.
+tsp120_100-5.dat: 121.865s.
+tsp120_1000-5.dat: 179.142s.
+tsp150_10-5.dat: 8.36279s.
+tsp150_100-5.dat: 341.835s.
+tsp150_1000-5.dat: 448.831s.
+tsp20_10-5.dat: 0.242245s.
+tsp20_100-5.dat: 0.253584s.
+tsp20_1000-5.dat: 0.330075s.
+tsp20_8x10-5.dat: 0.382147s.
+tsp50_10-5.dat: 1.60071s.
+tsp50_100-5.dat: 2.89877s.
+tsp50_1000-5.dat: 2.60182s.
+tsp50_100x5-5.dat: 104.728s.
+tsp50_12x10-5.dat: 4.86519s.
+tsp50_6x14-5.dat: 6.477s.
+tsp80_10-5.dat: 1.9827s.
+tsp80_100-5.dat: 15.53s.
+tsp80_1000-5.dat: 22.7591s.
+tsp80_12x10-5.dat: 24.9277s.
+tspRealistic50-5.dat: 857.415s.
+tspRealistic80-5.dat: 149.864s.
+
+
+tspRealistic50-1.dat solved (val=780.603) in 3691.7s
+tspRealistic50-2.dat solved (val=904.741) in 35.801s
+tspRealistic50-3.dat solved (val=826.721) in 14.4842s
+tspRealistic50-4.dat solved (val=860.409) in 240.691s
+tspRealistic50-5.dat solved (val=744.955) in 304.393s
+
+tspRealistic80-1.dat solved (val=1679.19) in 391.388s
+tspRealistic80-2.dat solved (val=1330.55) in 80.8584s
+tspRealistic80-3.dat solved (val=1329.72) in 165.28s
+tspRealistic80-4.dat solved (val=1556.56) in 57.872s
+tspRealistic80-5.dat solved (val=1501.31) in 53.9205s
