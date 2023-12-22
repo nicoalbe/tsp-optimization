@@ -1,0 +1,4 @@
+multistart  50
+time_limit  10.00
+max_iterations  20000
+max_non_improving_iterations    1000

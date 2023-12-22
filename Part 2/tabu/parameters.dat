@@ -1,0 +1,7 @@
+multistart  8
+time_limit  50.00
+tabu_lenght 7
+tabu_lenght_diversification 20
+max_iterations  2000
+max_non_improving_iterations    50
+max_diversification_iterations  40

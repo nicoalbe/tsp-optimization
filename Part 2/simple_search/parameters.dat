@@ -1,0 +1,3 @@
+multistart  100
+time_limit  10.00
+max_iterations  20000
