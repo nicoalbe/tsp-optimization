@@ -1,3 +1,6 @@
-multistart  100
-time_limit  10.00
-max_iterations  20000
+multistart  1000
+time_limit  90.00
+
+
+notes
+there is no multistart limit, just the overall. every time its stops once reached the local optimal

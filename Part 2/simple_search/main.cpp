@@ -123,7 +123,6 @@ try{
     double curr_val,next_val;
     double best_multistart=objective_function(curr_sol,weights);
     int n_best_multistart=0;
-    int k, k_non_improving; //non improving is consecutive with the acceptance
     double loss;
     //bool intensification=true;
     bool accept;
@@ -138,14 +137,10 @@ try{
             shuffle(curr_sol.begin(), curr_sol.end(), default_random_engine(seed));
         }
         
-        
-        k=0;
-        k_non_improving=0;
         curr_val=objective_function(curr_sol,weights);
         cout<<"start obj val: "<<curr_val<<endl;
         stopping_criteria=false;
         while(!stopping_criteria){
-            k++;
             //find first improvement
             next_sol=first_improvement_2optneighbour(curr_sol,weights);
             next_val=objective_function(next_sol,weights);
@@ -158,9 +153,13 @@ try{
                 cout<<"exit for no better neighbour"<<endl;
             }
             //calculate stopping criteria
-            if(k>max_iterations){
-                stopping_criteria=true;
-                cout<<"exit for max iterations"<<endl;
+            //get the time
+            gettimeofday(&tv_current, NULL);
+            time_difference = (double)(tv_current.tv_sec+tv_current.tv_usec*1e-6 - (tv_start.tv_sec+tv_start.tv_usec*1e-6));
+            //stop if time limit exceed
+            if(time_difference>time_limit){
+                stop=true;
+                cout<<"exit for time limit"<<endl;
             }
         }
 

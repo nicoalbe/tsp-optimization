@@ -297,7 +297,7 @@ try{
     double curr_val,best_val;
     double best_multistart=objective_function(curr_sol,weights);
     int n_best_multistart=0;
-    int k, k_non_improving, k_diversification;
+    int k, k_non_improving, k_diversification, best_k;
     bool intensification=true;
     while(!stop){
         
@@ -351,21 +351,24 @@ try{
 
             //if y is better than the best, store it
             curr_val=objective_function(next_sol,weights);
-            //cout<<"current solution: "<<curr_val;
+            //cout<<k<<":"<<"current solution: "<<curr_val;
             if(curr_val<best_val){
                 best_val=curr_val;
                 best_sol=next_sol;
                 k_non_improving=0;
-                //cout<<" *better solution found: "<<best_val<<endl;
+                best_k=k;
+                //cout<<" *better solution found: "<<best_val<<" iteration "<<k<<endl;
+                //cout<<"***********";
             } else {
                 k_non_improving++;
             }
             //x=y
+            //cout<<endl;
             curr_sol=next_sol;
             k++;
             if(k>max_iterations) {
                 stopping_criteria=true;
-                cout<<"exit for max iterations"<<endl;
+                cout<<"exit for max iterations "<<endl;
             }
             //start with diversification phase after 'some' non imporving iterations
             if(intensification && k_non_improving>max_non_improving_iterations){
@@ -381,7 +384,7 @@ try{
                 for(int i=0;i<tabu_lenght_diversification-tabu_lenght;i++){
                     tabu_list.erase(tabu_list.begin());
                 }
-
+                k_non_improving=0;
                 //cout<<"start back with intensification"<<endl;
             }
             //get the time
@@ -395,11 +398,11 @@ try{
             //stop if time limit exceed
             if(time_difference>time_limit){
                 stop=true;
-                cout<<"exit for time limit"<<endl;
+                cout<<"exit for time limit, k:"<<k<<endl;
             }
                 //stopping_criteria=true;
         }
-        cout<<"best val(m"<< current_multistart <<"): "<<best_val<<endl;
+        cout<<"best val(m"<< current_multistart <<"): "<<best_val<<" at iteration "<<best_k<<endl;
         if(best_val<best_multistart){
             best_multistart=best_val;
             n_best_multistart=current_multistart;

@@ -1,7 +1,18 @@
 multistart  8
-time_limit  50.00
+time_limit  90.00
 tabu_lenght 7
 tabu_lenght_diversification 20
-max_iterations  2000
-max_non_improving_iterations    50
-max_diversification_iterations  40
+max_iterations  3000
+max_non_improving_iterations    30
+max_diversification_iterations  80
+
+
+testing notes:
+more than 3000 iterations would take too much time, it takes 20 seconds for them. trading off time required to continue the exploration, and the quality of that solution, it's preferred to stop sooner and go to another multistart, so 10-20 seconds for each multistart is a good tradeoff.
+time for each multistart should be at least 10-20 seconds
+120 good max non max_non_improving_iterations
+a lot of diversification is good
+more than 30/50 intensification, non improving iterations is pointless
+a big tabu list asks for high computational effort, not giving better results. 5-7 is good for normal, 20 good for longer. exploiting time at best is very important, and a big tabu list is not worth the effort.
+50 nodes works very well.
+8 with 90 seconds is a good time

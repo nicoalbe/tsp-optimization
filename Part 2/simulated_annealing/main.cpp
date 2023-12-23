@@ -93,12 +93,12 @@ vector<int> some_neighbour_3opt(vector<int> instance, int k){
     return instance;
 }
 
-int get_prob(double loss,double k, double max_k){
+int get_prob(double loss,double k, double iterations_range, double temp_desc){
     /*double probability;
     double temperature=(loss==0)? 1:1-((k+1)/max_k);
     probability=exp(-(loss/temperature))*1000;
     return probability;*/
-    double temperature=(loss==0)? 0:(k/max_k)*10;
+    double temperature=(loss==0)? 0:(k/iterations_range)*temp_desc;
     double probability=exp(-temperature);
     return probability*1000;
 }
@@ -122,12 +122,15 @@ try{
     double time_limit;
     param_file>>garbage;
     param_file >> time_limit;
-    int max_iterations; //iteration counter
+    int iterations_range; //iteration counter
     param_file >> garbage;
-    param_file >> max_iterations;
-    int max_non_improving_iterations;
+    param_file >> iterations_range;
+    int max_non_accepted; //after some non accepted (no better neighbours and low temperature) stop
     param_file >> garbage;
-    param_file >> max_non_improving_iterations;
+    param_file >> max_non_accepted;
+    double temp_desc; //the higher the temp_par, the faster the temperature descends. it's the end point of e^-k
+    param_file >> garbage;
+    param_file >> temp_desc;
     param_file.close();
 
     //get instance
@@ -170,7 +173,7 @@ try{
     double curr_val,best_val,next_val;
     double best_multistart=objective_function(curr_sol,weights);
     int n_best_multistart=0;
-    int k, k_non_improving; //non improving is consecutive with the acceptance
+    int k,k_non_accepted;
     double loss;
     //bool intensification=true;
     bool accept;
@@ -188,7 +191,7 @@ try{
         //do simulated annealing here
         best_sol=curr_sol;
         k=0;
-        k_non_improving=0;
+        k_non_accepted=0;
         curr_val=objective_function(curr_sol,weights);
         cout<<"start obj val: "<<curr_val<<endl;
         best_val=curr_val;
@@ -202,12 +205,13 @@ try{
             if(next_val<best_val){
                 best_val=next_val;
                 best_sol=next_sol;
+                cout<<"new best val: "<<best_val<<"****"<<endl;
             }
             loss=(next_val<curr_val)? 0:next_val-curr_val;
             //calculate probability of acceptance
             srand (time(NULL)*k);
             outcome = rand() % 1000;
-            probability= get_prob(loss,k,max_iterations);
+            probability= get_prob(loss,k,iterations_range, temp_desc);
             //cout<<"prob "<<probability<<endl;
             accept= (outcome<probability);
             //cout<<"generated "<<next_val<<" accepting with prob "<<probability<<endl;
@@ -215,16 +219,36 @@ try{
             if(accept){
                 curr_sol=next_sol;
                 curr_val=next_val;
-                k_non_improving=0;
                 //cout<<"accepted "<<curr_val<<endl;
+                if(loss!=0){
+                    cout<<"accepted a bad neighbour, k:"<<k<<endl;
+                }
+                k_non_accepted=0;
             } else {
-                k_non_improving++;
+                k_non_accepted++;
             }
             //calculate stopping criteria
-            if(k>max_iterations){//if(k>max_iterations || k_non_improving>max_non_improving_iterations){
+            //if(k>max_iterations){
+                //stopping_criteria=true;
+                //cout<<"exit for max iteration"<<endl;
+            //}
+            if(k_non_accepted>max_non_accepted){
                 stopping_criteria=true;
+                cout<<"exit for non accepted"<<endl;
             }
-            //TODO no futher neighbours, stop
+            //get the time
+            gettimeofday(&tv_current, NULL);
+            time_difference = (double)(tv_current.tv_sec+tv_current.tv_usec*1e-6 - (tv_start.tv_sec+tv_start.tv_usec*1e-6));
+            //go to next multistart if time 
+            if(time_difference>(time_limit/n_multistart)*(current_multistart+1)){
+                stopping_criteria=true;
+                cout<<"exit multistart time limit"<<endl;
+            }
+            //stop if time limit exceed
+            if(time_difference>time_limit){
+                stop=true;
+                cout<<"exit for time limit, k:"<<k<<endl;
+            }
         }
 
         cout<<"best val(m"<< current_multistart <<"): "<<best_val<<endl;
