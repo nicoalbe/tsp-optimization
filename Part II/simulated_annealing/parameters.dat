@@ -1,0 +1,5 @@
+multistart  8
+time_limit  90.00
+iterations_range  2000
+max_non_accepted    50
+temp_par    10.0

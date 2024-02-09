@@ -1,0 +1,37 @@
+data/tsp50-2.dat: optimal= 904.741
+found= 904.741
+error= 3.09481e-07
+
+data/tsp50-3.dat: optimal= 826.721
+found= 826.854
+error= 0.000161167
+
+data/tsp50-4.dat: optimal= 860.409
+found= 860.409
+error= -1.16224e-08
+
+data/tsp50-5.dat: optimal= 744.955
+found= 744.955
+error= -5.36945e-07
+
+data/tsp80-1.dat: optimal= 1679.19
+found= 1679.67
+error= 0.000283226
+
+data/tsp80-2.dat: optimal= 1330.55
+found= 1330.56
+error= 5.75702e-06
+
+data/tsp80-3.dat: optimal= 1329.72
+found= 1329.72
+error= -1.70713e-06
+
+data/tsp80-4.dat: optimal= 1556.56
+found= 1557.6
+error= 0.000667883
+
+data/tsp80-5.dat: optimal= 1501.31
+found= 1506.71
+error= 0.00359865
+
+overall avg error= 0.00052386

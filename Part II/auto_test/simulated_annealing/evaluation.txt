@@ -1,0 +1,46 @@
+data/tsp100-1.dat: best result= 1636.02
+lower bound: 1367.87error= 0.393108
+
+data/tsp100-2.dat: best result= 1811.47
+lower bound: 1514.64error= 0.203211
+
+data/tsp100-3.dat: best result= 1740.45
+lower bound: 1374.46error= 0.515192
+
+data/tsp100-4.dat: best result= 1847.91
+lower bound: 1557.4error= 0.234901
+
+data/tsp100-5.dat: best result= 1852.63
+lower bound: 1636error= 0.259115
+
+data/tsp150-1.dat: best result= 2320.67
+lower bound: 2041.47error= 0.160437
+
+data/tsp150-2.dat: best result= 2241.44
+lower bound: 1872.56error= 0.217817
+
+data/tsp150-3.dat: best result= 2424.04
+lower bound: 2047.89error= 0.194153
+
+data/tsp150-4.dat: best result= 2182.85
+lower bound: 1863.8error= 0.192543
+
+data/tsp150-5.dat: best result= 2118.11
+lower bound: 1819.43error= 0.194477
+
+data/tsp200-1.dat: best result= 2531.75
+lower bound: 2089.12error= 0.239526
+
+data/tsp200-2.dat: best result= 2690.75
+lower bound: 2260.13error= 0.210908
+
+data/tsp200-3.dat: best result= 2463.38
+lower bound: 2057.34error= 0.22535
+
+data/tsp200-4.dat: best result= 2509.19
+lower bound: 2120.48error= 0.201989
+
+data/tsp200-5.dat: best result= 2692.83
+lower bound: 2298.41error= 0.220179
+
+overall avg error= 0.244194

@@ -1,0 +1,9 @@
+tspRealistic50-2.dat: 904.741
+tspRealistic50-3.dat: 826.721
+tspRealistic50-4.dat: 860.409
+tspRealistic50-5.dat: 744.955
+tspRealistic80-1.dat: 1679.19
+tspRealistic80-2.dat: 1330.55
+tspRealistic80-3.dat: 1329.72
+tspRealistic80-4.dat: 1556.56
+tspRealistic80-5.dat: 1501.31
